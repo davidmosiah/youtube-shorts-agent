@@ -1,5 +1,8 @@
 # YouTube Shorts Agent
 
+[![npm version](https://img.shields.io/npm/v/youtube-shorts-agent.svg)](https://www.npmjs.com/package/youtube-shorts-agent)
+[![CI](https://github.com/davidmosiah/youtube-shorts-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/davidmosiah/youtube-shorts-agent/actions/workflows/ci.yml)
+
 Agent-first YouTube Shorts uploader for the YouTube Data API. It is designed for Codex, Claude, Cursor, Hermes, OpenClaw and any MCP client that needs a predictable upload workflow with dry-run safety, OAuth readiness checks and structured output.
 
 ## What Agents Get
