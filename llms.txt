@@ -1,0 +1,21 @@
+# YouTube Shorts Agent
+
+Agent-first YouTube Shorts upload CLI and MCP server.
+
+Repository: https://github.com/davidmosiah/youtube-shorts-agent
+NPM: https://www.npmjs.com/package/youtube-shorts-agent
+Primary command: npm exec --yes --package=youtube-shorts-agent -- youtube-shorts-agent doctor
+MCP command: youtube-shorts-mcp
+
+Core tools:
+- youtube_agent_manifest
+- youtube_connection_status
+- youtube_privacy_audit
+- youtube_oauth_authorize_url
+- youtube_upload_short
+- youtube_list_recent_videos
+
+Safety:
+- Dry-run is enabled by default.
+- OAuth tokens are never returned to agents.
+- AI-generated uploads default to containsSyntheticMedia=true.

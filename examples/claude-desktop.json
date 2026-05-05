@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "youtube_shorts": {
+      "command": "npx",
+      "args": ["-y", "youtube-shorts-agent"]
+    }
+  }
+}

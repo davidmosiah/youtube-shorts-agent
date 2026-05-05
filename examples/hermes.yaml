@@ -1,0 +1,6 @@
+mcp_servers:
+  youtube_shorts:
+    command: npx
+    args: ["-y", "youtube-shorts-agent"]
+    sampling:
+      enabled: false

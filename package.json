@@ -1,7 +1,7 @@
 {
   "name": "youtube-shorts-agent",
-  "version": "0.1.1",
-  "description": "Local-first YouTube Shorts upload CLI and MCP helper for AI agents.",
+  "version": "0.1.2",
+  "description": "Agent-first YouTube Shorts upload CLI and MCP server with dry-run uploads, OAuth readiness and synthetic-media metadata.",
   "type": "module",
   "bin": {
     "youtube-shorts-agent": "src/cli.js",
@@ -19,9 +19,14 @@
     "ai-agents",
     "mcp",
     "model-context-protocol",
+    "mcp-server",
+    "agent-tools",
+    "agentic-workflows",
     "youtube",
     "shorts",
     "youtube-data-api",
+    "creator-tools",
+    "local-first",
     "cli"
   ],
   "author": "David Mosiah",
@@ -42,6 +47,8 @@
   },
   "files": [
     "src",
+    "examples",
+    "llms.txt",
     "README.md",
     "LICENSE",
     ".env.example"
