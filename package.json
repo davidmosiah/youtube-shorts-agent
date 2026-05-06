@@ -1,6 +1,7 @@
 {
   "name": "youtube-shorts-agent",
   "version": "0.1.2",
+  "mcpName": "io.github.davidmosiah/youtube-shorts-agent",
   "description": "Agent-first YouTube Shorts upload CLI and MCP server with dry-run uploads, OAuth readiness and synthetic-media metadata.",
   "type": "module",
   "bin": {
@@ -49,6 +50,7 @@
     "src",
     "examples",
     "llms.txt",
+    "server.json",
     "README.md",
     "LICENSE",
     ".env.example"

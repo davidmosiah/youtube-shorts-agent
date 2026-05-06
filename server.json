@@ -1,0 +1,45 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.davidmosiah/youtube-shorts-agent",
+  "version": "0.1.2",
+  "title": "YouTube Shorts Agent",
+  "description": "Agent-first YouTube Shorts uploader for the YouTube Data API. Provides dry-run upload validation, OAuth readiness checks and structured synthetic-media metadata.",
+  "websiteUrl": "https://github.com/davidmosiah/youtube-shorts-agent",
+  "repository": {
+    "url": "https://github.com/davidmosiah/youtube-shorts-agent",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "youtube-shorts-agent",
+      "version": "0.1.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "YOUTUBE_DRY_RUN",
+          "description": "Set to false only when the agent should perform live YouTube upload operations. Defaults to dry-run behavior.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "YOUTUBE_CLIENT_ID",
+          "description": "Google OAuth client ID. Optional until OAuth or live upload flows are used.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "YOUTUBE_CLIENT_SECRET",
+          "description": "Google OAuth client secret. Keep local and do not expose it to agents.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
