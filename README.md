@@ -1,13 +1,34 @@
-# YouTube Shorts Agent
+<!-- delx header v2 -->
+<h1 align="center">YouTube Shorts Agent</h1>
 
-[![npm version](https://img.shields.io/npm/v/youtube-shorts-agent.svg)](https://www.npmjs.com/package/youtube-shorts-agent)
-[![npm downloads](https://img.shields.io/npm/dm/youtube-shorts-agent.svg)](https://www.npmjs.com/package/youtube-shorts-agent)
-[![GitHub stars](https://img.shields.io/github/stars/davidmosiah/youtube-shorts-agent?style=flat-square&logo=github)](https://github.com/davidmosiah/youtube-shorts-agent/stargazers)
-[![CI](https://github.com/davidmosiah/youtube-shorts-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/davidmosiah/youtube-shorts-agent/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Agent-first](https://img.shields.io/badge/agent--first-MCP-0ea5a3?style=flat-square)](https://github.com/davidmosiah/youtube-shorts-agent)
+<div align="center">
+  <img src="assets/banner.png" alt="YouTube Shorts Agent" width="85%" />
+</div>
 
-> If this agent-first tool helps your workflow, please star the repo. Stars make this agent-first tooling easier for other builders to discover and help Delx keep shipping open infrastructure.
+<h3 align="center">
+  Agent-first YouTube Shorts uploader for the YouTube Data API.<br>Dry-run safe, OAuth readiness checks, MCP-ready for Codex / Claude / Cursor / Hermes.
+</h3>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/youtube-shorts-agent"><img src="https://img.shields.io/npm/v/youtube-shorts-agent?style=for-the-badge&labelColor=0F172A&color=10B981&logo=npm&logoColor=white" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/youtube-shorts-agent"><img src="https://img.shields.io/npm/dm/youtube-shorts-agent?style=for-the-badge&labelColor=0F172A&color=0EA5A3&logo=npm&logoColor=white" alt="npm downloads" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-22C55E?style=for-the-badge&labelColor=0F172A" alt="License MIT" /></a>
+  <a href="https://modelcontextprotocol.io"><img src="https://img.shields.io/badge/BUILT_FOR-MCP-7C3AED?style=for-the-badge&labelColor=0F172A" alt="Built for MCP" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/davidmosiah/youtube-shorts-agent/stargazers"><img src="https://img.shields.io/github/stars/davidmosiah/youtube-shorts-agent?style=for-the-badge&labelColor=0F172A&color=FBBF24&logo=github" alt="GitHub stars" /></a>
+  <a href="https://github.com/davidmosiah/youtube-shorts-agent/actions/workflows/ci.yml"><img src="https://github.com/davidmosiah/youtube-shorts-agent/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>
+  <a href="https://github.com/davidmosiah"><img src="https://img.shields.io/badge/PART_OF-Delx_Agent_Stack-0EA5A3?style=for-the-badge&labelColor=0F172A" alt="Part of the Delx agent stack" /></a>
+  <a href="https://github.com/davidmosiah/youtube-shorts-agent"><img src="https://img.shields.io/badge/CATEGORY-Reach-FF0000?style=for-the-badge&labelColor=0F172A" alt="Category" /></a>
+</p>
+
+> ⭐ **If this agent-first tool helps your workflow, please star the repo.** Stars make this tooling easier for other builders to discover and help Delx keep shipping open infrastructure.<br>
+> 🧱 Part of the [Delx agent stack](https://github.com/davidmosiah) &mdash; 15 open-source MCP servers across **body, reach and coordination**.
+
+---
+
+<!-- /delx header v2 -->
 
 Agent-first YouTube Shorts uploader for the YouTube Data API. It is designed for Codex, Claude, Cursor, Hermes, OpenClaw and any MCP client that needs a predictable upload workflow with dry-run safety, OAuth readiness checks and structured output.
 
