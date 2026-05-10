@@ -1,21 +1,38 @@
 # YouTube Shorts Agent
 
-Agent-first YouTube Shorts upload CLI and MCP server.
+Agent-first YouTube Shorts upload CLI and MCP server. OAuth-authenticated, dry-run safe by default, never returns tokens to the agent.
 
 Repository: https://github.com/davidmosiah/youtube-shorts-agent
 NPM: https://www.npmjs.com/package/youtube-shorts-agent
+Docs: https://github.com/davidmosiah/youtube-shorts-agent#readme
 Primary command: npm exec --yes --package=youtube-shorts-agent -- youtube-shorts-agent doctor
 MCP command: youtube-shorts-mcp
 
 Core tools:
-- youtube_agent_manifest
-- youtube_connection_status
-- youtube_privacy_audit
-- youtube_oauth_authorize_url
-- youtube_upload_short
-- youtube_list_recent_videos
+- youtube_agent_manifest — runtime contract, tool list, supported clients
+- youtube_connection_status — credentials present, token age, dry-run mode
+- youtube_capabilities — supported uploads, max file size, regions
+- youtube_privacy_audit — what is logged locally vs sent to YouTube
+- youtube_oauth_authorize_url — generates the consent URL for the user
+- youtube_upload_short — uploads a short with title, description, tags, visibility
+- youtube_list_recent_videos — lists recent uploads for confirmation
+
+OAuth env vars:
+- YOUTUBE_CLIENT_ID, YOUTUBE_CLIENT_SECRET — from Google Cloud Console (YouTube Data API v3)
+- YOUTUBE_REDIRECT_URI — must match exactly what you registered
+- YOUTUBE_TOKEN_PATH — defaults to ~/.youtube-shorts-agent/tokens.json
+- YOUTUBE_DRY_RUN=true — default; set to false to publish for real
+- YOUTUBE_PRIVACY_MODE — default "private"; "public" or "unlisted" allowed
+
+Workflow for agents:
+1. Call youtube_connection_status before any upload to verify credentials.
+2. If dry_run is true, the agent should warn the user that nothing will go live.
+3. Always preview title, description, and tags with the user before uploading.
+4. AI-generated content defaults to containsSyntheticMedia=true (YouTube policy).
 
 Safety:
-- Dry-run is enabled by default.
-- OAuth tokens are never returned to agents.
-- AI-generated uploads default to containsSyntheticMedia=true.
+- OAuth tokens stored locally, never returned in tool output.
+- Dry-run on by default; flipping to live requires explicit user intent.
+- AI-generated uploads tagged as synthetic per YouTube guidelines.
+- Quota usage logged locally so the agent can warn before hitting daily limits.
+- Not affiliated with or endorsed by Google or YouTube.
