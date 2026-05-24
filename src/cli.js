@@ -62,6 +62,30 @@ function readJson(value, fallback = {}) {
   return JSON.parse(String(value));
 }
 
+
+function safeConnectionStatus(status) {
+  return {
+    ok: status.ok,
+    dry_run: status.dry_run,
+    configured: {
+      client_credentials: status.configured.oauth_client ? 'configured' : 'missing',
+      access_token: status.configured.access_token ? 'configured' : 'missing',
+      refresh_token: status.configured.refresh_token ? 'configured' : 'missing'
+    },
+    missing_count: status.missing.length,
+    ready_for_live_upload: status.ready_for_live_upload,
+    next_steps: status.next_steps
+  };
+}
+
+function safePrivacyAudit(audit) {
+  const { oauth_scopes: scopes, ...rest } = audit;
+  return {
+    ...rest,
+    required_google_permission_count: Array.isArray(scopes) ? scopes.length : 0
+  };
+}
+
 function output(data, args, title = 'Result') {
   if (args.format === 'markdown') {
     console.log(formatMarkdown(title, data));
@@ -140,12 +164,12 @@ export async function runCliCommand(argv = process.argv.slice(2)) {
   }
 
   if (command === 'doctor') {
-    output(buildConnectionStatus({ env: process.env }), args, 'YouTube Connection Status');
+    output(safeConnectionStatus(buildConnectionStatus({ env: process.env })), args, 'YouTube Connection Status');
     return 0;
   }
 
   if (command === 'privacy-audit') {
-    output(buildPrivacyAudit(), args, 'YouTube Privacy Audit');
+    output(safePrivacyAudit(buildPrivacyAudit()), args, 'YouTube Privacy Audit');
     return 0;
   }
 
