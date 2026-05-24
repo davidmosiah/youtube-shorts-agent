@@ -79,19 +79,39 @@ function safeConnectionStatus(status) {
 }
 
 function safePrivacyAudit(audit) {
-  const { oauth_scopes: scopes, ...rest } = audit;
   return {
-    ...rest,
-    required_google_permission_count: Array.isArray(scopes) ? scopes.length : 0
+    project: audit.project,
+    secrets_returned_to_agent: audit.secrets_returned_to_agent,
+    local_files_ignored: audit.local_files_ignored,
+    external_services: audit.external_services,
+    token_storage: audit.token_storage,
+    safety_rules: audit.safety_rules,
+    required_google_permission_count: Array.isArray(audit.oauth_scopes) ? audit.oauth_scopes.length : 0
   };
 }
 
+function safeOutput(data) {
+  if (Array.isArray(data)) return data.map(safeOutput);
+  if (!data || typeof data !== 'object') return data;
+  const safe = {};
+  for (const [key, value] of Object.entries(data)) {
+    if (key === 'oauth_scopes' || key === 'stack') continue;
+    if (key === 'error') {
+      safe[key] = String(value).includes('\n') ? 'internal_error' : String(value);
+      continue;
+    }
+    safe[key] = safeOutput(value);
+  }
+  return safe;
+}
+
 function output(data, args, title = 'Result') {
+  const safeData = safeOutput(data);
   if (args.format === 'markdown') {
-    console.log(formatMarkdown(title, data));
+    console.log(formatMarkdown(title, safeData));
     return;
   }
-  console.log(JSON.stringify(data, null, 2));
+  console.log(JSON.stringify(safeData, null, 2));
 }
 
 function createAdapter(cfg) {
