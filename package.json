@@ -1,6 +1,6 @@
 {
   "name": "youtube-shorts-agent",
-  "version": "0.1.4",
+  "version": "0.1.3",
   "mcpName": "io.github.davidmosiah/youtube-shorts-agent",
   "description": "Agent-first YouTube Shorts upload CLI and MCP server with dry-run uploads, OAuth readiness and synthetic-media metadata.",
   "type": "module",
@@ -34,7 +34,7 @@
   "author": "David Mosiah",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.21.0",
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "zod": "^4.4.1"
@@ -64,5 +64,11 @@
     "url": "https://github.com/davidmosiah/youtube-shorts-agent/issues",
     "email": "support@delx.ai"
   },
-  "homepage": "https://github.com/davidmosiah/youtube-shorts-agent"
+  "homepage": "https://github.com/davidmosiah/youtube-shorts-agent",
+  "overrides": {
+    "qs": "6.15.2",
+    "hono": "4.12.22",
+    "fast-uri": "3.1.2",
+    "ip-address": "10.2.0"
+  }
 }
