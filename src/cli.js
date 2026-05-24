@@ -85,8 +85,7 @@ function safePrivacyAudit(audit) {
     local_files_ignored: audit.local_files_ignored,
     external_services: audit.external_services,
     token_storage: audit.token_storage,
-    safety_rules: audit.safety_rules,
-    required_google_permission_count: Array.isArray(audit.oauth_scopes) ? audit.oauth_scopes.length : 0
+    safety_rules: audit.safety_rules
   };
 }
 
