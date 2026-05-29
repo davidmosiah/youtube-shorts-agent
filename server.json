@@ -3,7 +3,7 @@
   "name": "io.github.davidmosiah/youtube-shorts-agent",
   "version": "0.1.5",
   "title": "YouTube Shorts Agent",
-  "description": "Agent-first YouTube Shorts uploader for the YouTube Data API. Provides dry-run upload validation, OAuth readiness checks and structured synthetic-media metadata.",
+  "description": "Agent-first YouTube Shorts uploader: dry-run validation, OAuth checks, synthetic-media metadata.",
   "websiteUrl": "https://github.com/davidmosiah/youtube-shorts-agent",
   "repository": {
     "url": "https://github.com/davidmosiah/youtube-shorts-agent",
