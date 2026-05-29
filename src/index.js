@@ -17,7 +17,7 @@ import { buildAgentManifest, buildConnectionStatus, buildPrivacyAudit, formatMar
 import { buildAuthUrl, createPkcePair, persistSession } from './tools/youtube-oauth-lib.js';
 
 const SERVER_NAME = 'youtube-shorts-agent';
-const SERVER_VERSION = "0.1.5";
+const SERVER_VERSION = "0.1.6";
 const ResponseFormatSchema = z.enum(['json', 'markdown']).default('json');
 
 function createAdapter(cfg) {

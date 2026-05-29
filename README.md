@@ -68,6 +68,95 @@ youtube-shorts-agent list-recent --max-results 10
 
 Dry-run is enabled by default. Set `YOUTUBE_DRY_RUN=false` only when `doctor` reports a complete OAuth setup and you intend to call the live API.
 
+## First Upload (dry-run walkthrough)
+
+This is the full first-run path. Every step here is **dry-run safe** — no credentials are required and nothing is sent to YouTube. The output below is captured verbatim from a real run.
+
+**1. Check readiness.** With no OAuth configured, `doctor` confirms you are in dry-run mode:
+
+```bash
+youtube-shorts-agent doctor
+```
+
+```json
+{
+  "ok": true,
+  "dry_run": true,
+  "configured": {
+    "client_credentials": "missing",
+    "access_token": "missing",
+    "refresh_token": "missing"
+  },
+  "missing_count": 3,
+  "ready_for_live_upload": false,
+  "next_steps": [
+    "Current mode is dry-run. Validate metadata and agent flow before live uploads."
+  ]
+}
+```
+
+**2. Prepare a Short and its caption.**
+
+```bash
+printf 'Launching the agent-first Shorts uploader.\n#shorts #ai #agents' > copy.txt
+# short.mp4 is your vertical 9:16 clip
+```
+
+**3. Run the upload in dry-run.** No network call is made; the tool returns the exact job and result it would publish, so an agent can validate metadata before going live:
+
+```bash
+youtube-shorts-agent upload-short \
+  --video ./short.mp4 \
+  --title "Agent-first Shorts upload" \
+  --caption-file copy.txt \
+  --tags ai,agents \
+  --duration 24
+```
+
+```json
+{
+  "ok": true,
+  "dry_run": true,
+  "job": {
+    "id": "youtube_1780082215631",
+    "platform": "youtube",
+    "status": "queued",
+    "createdAt": "2026-05-29T19:16:55.631Z",
+    "caption": "Launching the agent-first Shorts uploader.\n#shorts #ai #agents",
+    "targetUrl": "",
+    "mediaPaths": ["./short.mp4"],
+    "metadata": {
+      "title": "Agent-first Shorts upload",
+      "youtube_title": "Agent-first Shorts upload",
+      "youtube_tags": ["ai", "agents"],
+      "youtube_contains_synthetic_media": true,
+      "video_duration_sec": 24,
+      "video_aspect_ratio": "9:16"
+    }
+  },
+  "result": {
+    "provider": "youtube_official",
+    "platformPostId": "dryrun_1780082215631",
+    "releaseUrl": "https://www.youtube.com",
+    "raw": { "dryRun": true, "jobId": "youtube_1780082215631" }
+  }
+}
+```
+
+`platformPostId` is prefixed with `dryrun_` and `releaseUrl` is the YouTube root — both signal that nothing was uploaded. The `id`, `createdAt` and `dryrun_*` values vary per run.
+
+**4. Confirm the channel listing path** (returns an empty list in dry-run):
+
+```bash
+youtube-shorts-agent list-recent --max-results 5
+```
+
+```json
+{ "items": [] }
+```
+
+**Going live.** Configure OAuth (`youtube-shorts-agent auth-url --redirect-uri http://localhost:8787/callback`, then exchange the callback code for tokens), set `YOUTUBE_CLIENT_ID` / `YOUTUBE_CLIENT_SECRET` / `YOUTUBE_ACCESS_TOKEN` / `YOUTUBE_REFRESH_TOKEN` in `.env`, re-run `doctor` until `ready_for_live_upload` is `true`, then set `YOUTUBE_DRY_RUN=false` and re-run the same `upload-short` command.
+
 ## MCP
 
 ```bash
