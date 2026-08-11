@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.8
+
+- Security: fleet pin hygiene — `hono@4.13.1`, `@hono/node-server@2.1.0`, `fast-uri@3.1.5`, `ip-address@10.4.0` (stale security overrides were still vulnerable).
+
+
 ## 0.1.6 - 2026-05-29
 - Docs: add an end-to-end "First Upload (dry-run walkthrough)" to the README with output captured verbatim from a real run (`doctor` → `upload-short` → `list-recent`), showing how an agent validates metadata before going live. No code or behavior changes.
 
