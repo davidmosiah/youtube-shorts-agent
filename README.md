@@ -168,7 +168,7 @@ youtube-shorts-mcp
 Default is **stdio**. Optional Streamable HTTP — no session id, JSON responses, loopback only:
 
 ```bash
-npx -y youtube-shorts-agent --http
+npx -y -p youtube-shorts-agent youtube-shorts-mcp --http
 # GET  http://127.0.0.1:3032/health
 # POST http://127.0.0.1:3032/mcp   (sessionless)
 ```
