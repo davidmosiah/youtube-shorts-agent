@@ -163,11 +163,17 @@ youtube-shorts-agent list-recent --max-results 5
 youtube-shorts-mcp
 ```
 
-HTTP transport:
+## HTTP (v2 stateless)
+
+Default is **stdio**. Optional Streamable HTTP — no session id, JSON responses, loopback only:
 
 ```bash
-YOUTUBE_MCP_TRANSPORT=http youtube-shorts-mcp
+npx -y youtube-shorts-agent --http
+# GET  http://127.0.0.1:3032/health
+# POST http://127.0.0.1:3032/mcp   (sessionless)
 ```
+
+Env: `YOUTUBE_MCP_HOST`, `YOUTUBE_MCP_PORT`, `YOUTUBE_MCP_TRANSPORT=http`.
 
 Hermes-style config:
 
