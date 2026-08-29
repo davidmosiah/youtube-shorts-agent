@@ -11,6 +11,7 @@ import { buildAgentManifest, buildConnectionStatus, buildPrivacyAudit, formatMar
 import { buildAuthUrl, createPkcePair, persistSession } from './tools/youtube-oauth-lib.js';
 
 const COMMANDS = new Set([
+  'call',
   'manifest',
   'doctor',
   'privacy-audit',
@@ -171,6 +172,18 @@ export async function runCliCommand(argv = process.argv.slice(2)) {
 
   const args = parseArgs(argv.slice(1));
   const cfg = getConfig();
+
+  
+  if (command === 'call') {
+    const tool = argv[1];
+    const mapped = {"youtube_agent_manifest": "manifest", "youtube_connection_status": "doctor", "youtube_privacy_audit": "privacy-audit", "youtube_oauth_authorize_url": "auth-url", "youtube_upload_short": "upload-short", "youtube_list_recent_videos": "list-recent"}[tool];
+    if (!mapped) {
+      console.error('Unknown tool: ' + (tool || ''));
+      console.error('Tools: ' + Object.keys({"youtube_agent_manifest": "manifest", "youtube_connection_status": "doctor", "youtube_privacy_audit": "privacy-audit", "youtube_oauth_authorize_url": "auth-url", "youtube_upload_short": "upload-short", "youtube_list_recent_videos": "list-recent"}).join(', '));
+      return 1;
+    }
+    return runCliCommand([mapped, ...argv.slice(2)]);
+  }
 
   if (command === 'help') {
     output(help(), args, 'YouTube Shorts Agent');
