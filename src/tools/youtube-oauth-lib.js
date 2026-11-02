@@ -1,5 +1,6 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
+import { writePrivateOAuthFile } from './private-oauth-file.mjs';
 
 export function base64Url(input) {
   return Buffer.from(input)
@@ -32,7 +33,7 @@ export function buildAuthUrl({ clientId, redirectUri, scopes, state, codeChallen
 }
 
 export function persistSession(sessionPath, session) {
-  fs.writeFileSync(sessionPath, JSON.stringify(session, null, 2) + '\n', 'utf8');
+  writePrivateOAuthFile(sessionPath, JSON.stringify(session, null, 2) + '\n');
 }
 
 export function loadSession(sessionPath) {
@@ -43,3 +44,4 @@ export function loadSession(sessionPath) {
     return null;
   }
 }
+
