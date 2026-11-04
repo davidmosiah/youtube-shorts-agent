@@ -68,6 +68,13 @@ youtube-shorts-agent list-recent --max-results 10
 
 Dry-run is enabled by default. Set `YOUTUBE_DRY_RUN=false` only when `doctor` reports a complete OAuth setup and you intend to call the live API.
 
+## Optional cover draft
+
+Prepare a local square cover draft with the [cover recipe](examples/cover-recipe.md).
+Preview offline, request a free quote, then let the operator approve that exact
+purchase with `--pay`. The separate image kit verifies the WebP and safely resumes
+the same payment authorization.
+
 ## First Upload (dry-run walkthrough)
 
 This is the full first-run path. Every step here is **dry-run safe** — no credentials are required and nothing is sent to YouTube. The output below is captured verbatim from a real run.
